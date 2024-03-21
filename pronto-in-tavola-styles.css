@@ -1,0 +1,295 @@
+*::before,
+*::after {
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'DotGothic16', sans-serif;
+    color: #403d3d;
+    background-image: url(body-background.jpg);
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-attachment: fixed;
+    text-transform: uppercase;
+    height: 100vh;
+    width: 100vw;
+    margin: 0;
+    padding: 0;
+    text-shadow: 0.5px 0.2px 0px #444;
+    overflow: hidden;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 1;
+    }
+}
+
+#receipt-container {
+    background-image: url(paper.png);
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    filter: contrast(120%);
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    max-width: 390px;
+    height: 90vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    overflow: scroll;
+    --mask:
+        radial-gradient(2.24px at 50% 3px, #000 99%, #0000 101%) calc(50% - 4px) 0/8px 51% repeat-x,
+        radial-gradient(2.24px at 50% -1px, #0000 99%, #000 101%) 50% 2px/8px calc(51% - 2px) repeat-x,
+        radial-gradient(2.24px at 50% calc(100% - 3px), #000 99%, #0000 101%) 50% 100%/8px 51% repeat-x,
+        radial-gradient(2.24px at 50% calc(100% + 1px), #0000 99%, #000 101%) calc(50% - 4px) calc(100% - 2px)/8px calc(51% - 2px) repeat-x;
+    -webkit-mask: var(--mask);
+    mask: var(--mask);
+    animation: fadeIn 1s ease-in-out;
+}
+
+#header {
+    display: flex;
+    width: 100%;
+    justify-content: center;
+    margin: 0;
+    padding: 0;
+}
+
+h2 {
+    margin: 0;
+    font-size: 1.3rem;
+}
+
+#address-contact {
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    width: 95%;
+}
+
+#eat-in-takeaway {
+    display: flex;
+    flex-direction: row;
+    width: 95%;
+    justify-content: space-between;
+}
+
+.line {
+    width: 95%;
+    border: dashed 1px;
+}
+
+#list {
+    display: flex;
+    flex-direction: column;
+    align-self: start;
+    width: 100%;
+}
+
+@keyframes marquee {
+    0% {
+        transform: translateX(0);
+    }
+
+    100% {
+        transform: translateX(-100%);
+    }
+}
+
+.marquee {
+    width: 100%;
+    overflow: hidden;
+    white-space: nowrap;
+    display: flex;
+}
+
+.marquee span {
+    display: inline-block;
+    animation: marquee 7s linear infinite;
+}
+
+
+#hours-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: repeat(7, 1fr);
+    gap: 0px 0px;
+    grid-auto-flow: row;
+    grid-template-areas:
+        "monday monday-time"
+        "tuesday tuesday-time"
+        "wednesday wednesday-time"
+        "thursday thursday-time"
+        "friday friday-time"
+        "saturday saturday-time"
+        "sunday sunday-time";
+    margin: 2%;
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 1s ease-out;
+}
+
+#hours:hover {
+    cursor: pointer;
+}
+
+#hours-grid.open {
+    max-height: 350px;
+}
+
+.monday {
+    grid-area: monday;
+}
+
+.tuesday {
+    grid-area: tuesday;
+}
+
+.wednesday {
+    grid-area: wednesday;
+}
+
+.thursday {
+    grid-area: thursday;
+}
+
+.friday {
+    grid-area: friday;
+}
+
+.saturday {
+    grid-area: saturday;
+}
+
+.sunday {
+    grid-area: sunday;
+}
+
+.monday-time {
+    grid-area: monday-time;
+    justify-self: end;
+}
+
+.tuesday-time {
+    grid-area: tuesday-time;
+    justify-self: end;
+}
+
+.wednesday-time {
+    grid-area: wednesday-time;
+    justify-self: end;
+}
+
+.thursday-time {
+    grid-area: thursday-time;
+    justify-self: end;
+}
+
+.friday-time {
+    grid-area: friday-time;
+    justify-self: end;
+}
+
+.saturday-time {
+    grid-area: saturday-time;
+    justify-self: end;
+}
+
+.sunday-time {
+    grid-area: sunday-time;
+    justify-self: end;
+}
+
+#reservations:hover {
+    cursor: pointer;
+}
+
+#reservation-text {
+    margin: 2%;
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.5s ease-out;
+}
+
+#reservation-text.open {
+    max-height: 250px;
+}
+
+#food-drinks:hover {
+    cursor: pointer;
+}
+
+#menu {
+    margin: 2%;
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 1s ease-out;
+}
+
+#menu.open {
+    max-height: 900px;
+}
+
+/*text*/
+#food-drinks,
+#hours,
+#reservations,
+#sign-off,
+#share-our-table,
+#signature,
+#bar-code,
+#thanks {
+    display: flex;
+    margin: 2%;
+}
+
+#sign-off,
+#share-our-table,
+#bar-code,
+#thanks {
+    margin: 0;
+    justify-content: center;
+}
+
+#bar-code {
+    font-family: 'Libre Barcode 39', sans-serif;
+    font-size: 3rem;
+}
+
+#bottom-receipt {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    margin-top: auto;
+}
+
+img {
+    position: relative;
+    left: 100px;
+    top: 60px;
+    height: 50px;
+    width: 250px;
+}
+
+a {
+    color: #403d3d;
+    text-decoration: none;
+}
+
+/*media*/
+@media screen and (max-width: 500px) {
+
+    #receipt-container {
+        max-width: 100%;
+        height: 100%;
+    }
+}
